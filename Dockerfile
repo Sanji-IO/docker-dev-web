@@ -44,6 +44,7 @@ RUN gem install compass
 
 # Install staging server make file
 VOLUME /root/.staging
+VOLUME /root/project
 
 # Clean up
 RUN apt-get remove -y \
