@@ -42,6 +42,9 @@ RUN gem install bundler && rbenv rehash
 # Install compass
 RUN gem install compass
 
+# Install staging server make file
+RUN git clone https://bitbucket.org/moxa-tw/staging.git $HOME/.staging
+
 # Clean up
 RUN apt-get remove -y \
     build-essential \
