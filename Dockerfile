@@ -4,10 +4,10 @@ MAINTAINER Zack Yang <zack9433@gmail.com>
 RUN apt-get update && apt-get install -y \
     build-essential \
     libssl-dev \
+    libpng-dev \
     python-software-properties \
     git \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+    curl
 
 USER root
 ENV HOME /root
@@ -54,9 +54,10 @@ RUN /bin/bash -c "mkdir .ssh && \
                   echo 'echo -e \"Host bitbucket.org\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config' >> ~/.bash_profile"
 
 # Clean up
-RUN apt-get remove -y \
-    build-essential \
-    libssl-dev
+#RUN apt-get remove -y \
+#    build-essential \
+#    libpng-dev \
+#    libssl-dev
 
 ENTRYPOINT ["/bin/bash", "--login", "-i", "-c"]
 WORKDIR $HOME
