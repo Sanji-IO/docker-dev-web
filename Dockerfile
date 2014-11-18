@@ -46,6 +46,13 @@ RUN gem install compass
 VOLUME /root/.staging
 VOLUME /root/project
 
+# Setup ssh key
+RUN /bin/bash -c "mkdir .ssh && \
+                  echo 'ssh-keygen -q -f ~/.ssh/id_rsa -N \"\" -t rsa' >> ~/.bash_profile && \
+                  echo 'cat ~/.ssh/id_rsa.pub' >> ~/.bash_profile && \
+                  echo 'echo -e \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config' >> ~/.bash_profile && \
+                  echo 'echo -e \"Host bitbucket.org\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config' >> ~/.bash_profile"
+
 # Clean up
 RUN apt-get remove -y \
     build-essential \
