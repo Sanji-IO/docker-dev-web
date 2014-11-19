@@ -52,7 +52,7 @@ RUN /bin/bash -c "mkdir .ssh && \
                   echo 'cat ~/.ssh/id_rsa.pub' >> ~/.bash_profile && \
                   echo 'echo -e \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config' >> ~/.bash_profile && \
                   echo 'echo -e \"Host bitbucket.org\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config' >> ~/.bash_profile && \
-                  echo 'git config --global url."https://".insteadOf git://"' >> ~/.bash_profile"
+                  echo 'git config --global url.\"https://\".insteadOf git://' >> ~/.bash_profile"
 
 # Clean up
 #RUN apt-get remove -y \
