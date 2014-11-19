@@ -14,12 +14,13 @@ ENV HOME /root
 ENV NODE_INSTALL_VERSION v0.10.33
 ENV RUBY_INSTALL_VERSION 2.1.2
 
-# Install node.js
+# Install node.js and upgrade npm
 RUN git clone https://github.com/creationix/nvm.git $HOME/.nvm
 RUN /bin/bash -c "source ~/.nvm/nvm.sh && nvm install $NODE_INSTALL_VERSION && \
    nvm use ${NODE_INSTALL_VERSION} && nvm alias default $NODE_INSTALL_VERSION && \
    ln -s $HOME/.nvm/$NODE_INSTALL_VERSION/bin/node /usr/bin/node && \
-   ln -s $HOME/.nvm/$NODE_INSTALL_VERSION/bin/npm /usr/bin/npm"
+   ln -s $HOME/.nvm/$NODE_INSTALL_VERSION/bin/npm /usr/bin/npm && \
+   curl https://www.npmjs.org/install.sh | sh"
 
 # Install ruby
 RUN /bin/bash -c "git clone https://github.com/sstephenson/rbenv.git $HOME/.rbenv && \
